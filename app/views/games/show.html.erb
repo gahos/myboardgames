@@ -1,2 +1,25 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<h1>ゲーム詳細</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ゲーム名</th>
+      <th>所持</th>
+      <th>評価</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @game.title %></td>
+      <% if @game.having %>
+        <td>〇</td>
+      <% else %>
+        <td>×</td>
+      <% end %>
+      <td><%= RatingStar(@game.rating) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'ゲームの編集', edit_game_path(@game), class: "btn btn-default" %>
+<%= link_to 'ゲームの削除', @game, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>

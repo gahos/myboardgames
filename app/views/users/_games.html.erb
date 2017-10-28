@@ -1,0 +1,24 @@
+<% if games.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ゲーム名</th>
+        <th>所持</th>
+        <th>評価</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% games.each do |game| %>
+        <tr>
+          <td><%= link_to game.title, game_path(game) %></td>
+          <% if game.having %>
+            <td>〇</td>
+          <% else %>
+            <td>×</td>
+          <% end %>
+          <td><%= RatingStar(game.rating) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
